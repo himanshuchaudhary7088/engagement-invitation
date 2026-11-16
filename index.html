@@ -645,68 +645,79 @@ footer strong {
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
+
 <script>
+let musicPlaying = false;
+
+// OPEN INVITATION
 function openInvitation() {
     const music = document.getElementById("backgroundMusic");
+    const button = document.getElementById("soundButton");
 
     music.volume = 0.5;
 
-    music.play().catch(() => {
+    music.play().then(() => {
+        musicPlaying = true;
+        button.textContent = "♫ SOUND ON";
+    }).catch(() => {
         console.log("Tap to enable sound");
     });
 
     document.getElementById("opening").classList.add("closed");
 }
-</script>
 
-const target = new Date("2026-11-20T11:00:00+05:30").getTime();
+// COUNTDOWN
+const target = new Date(2026, 10, 20, 11, 0, 0).getTime();
 
 function updateCountdown() {
-  const diff = target - Date.now();
+    const diff = target - Date.now();
 
-  if (diff <= 0) {
-    document.getElementById("countdown").innerHTML =
-      "<h3 style='color:var(--wine)'>The celebration day is here!</h3>";
-    return;
-  }
+    if (diff <= 0) {
+        document.getElementById("countdown").innerHTML =
+            "<h3 style='color:var(--wine)'>The celebration day is here!</h3>";
+        return;
+    }
 
-  const values = {
-    days: Math.floor(diff / 86400000),
-    hours: Math.floor(diff % 86400000 / 3600000),
-    minutes: Math.floor(diff % 3600000 / 60000),
-    seconds: Math.floor(diff % 60000 / 1000)
-  };
+    const values = {
+        days: Math.floor(diff / 86400000),
+        hours: Math.floor(diff % 86400000 / 3600000),
+        minutes: Math.floor(diff % 3600000 / 60000),
+        seconds: Math.floor(diff % 60000 / 1000)
+    };
 
-  for (const [id, value] of Object.entries(values)) {
-    document.getElementById(id).textContent =
-      String(value).padStart(2, "0");
-  }
+    for (const [id, value] of Object.entries(values)) {
+        const element = document.getElementById(id);
+
+        if (element) {
+            element.textContent = String(value).padStart(2, "0");
+        }
+    }
 }
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-let musicPlaying = false;
-
+// SOUND BUTTON
 async function toggleSound() {
-  const music = document.getElementById("backgroundMusic");
-  const button = document.getElementById("soundButton");
+    const music = document.getElementById("backgroundMusic");
+    const button = document.getElementById("soundButton");
 
-  if (!musicPlaying) {
-    try {
-      await music.play();
-      musicPlaying = true;
-      button.textContent = "♫ SOUND ON";
-    } catch (error) {
-      alert("Add a music.mp3 file to the website folder to enable music.");
+    if (!musicPlaying) {
+        try {
+            await music.play();
+            musicPlaying = true;
+            button.textContent = "♫ SOUND ON";
+        } catch (error) {
+            alert("Please check your music.mp3 file.");
+        }
+    } else {
+        music.pause();
+        musicPlaying = false;
+        button.textContent = "♫ SOUND OFF";
     }
-  } else {
-    music.pause();
-    musicPlaying = false;
-    button.textContent = "♫ SOUND OFF";
-  }
 }
 </script>
+
 
 </body>
 </html>
