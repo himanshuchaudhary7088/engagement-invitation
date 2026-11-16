@@ -1,0 +1,712 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Engagement Ceremony | The Chaudhary Family</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --wine: #4b1020;
+  --wine-dark: #260711;
+  --gold: #c9a45c;
+  --gold-light: #ead5a4;
+  --cream: #fff8eb;
+  --text: #44242a;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--text);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+button, a { font: inherit; }
+
+/* OPENING SCREEN */
+
+#opening {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background:
+    radial-gradient(ellipse at center, #641b30 0%, #300914 75%);
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 25px;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+#opening.closed {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.opening-inner {
+  max-width: 650px;
+  width: 100%;
+  border: 1px solid var(--gold);
+  outline: 1px solid #9c793e;
+  outline-offset: 8px;
+  padding: 55px 22px;
+  position: relative;
+}
+
+.opening-inner:before,
+.opening-inner:after {
+  content: "✦ ❖ ✦";
+  display: block;
+  color: var(--gold);
+  letter-spacing: 12px;
+  font-size: 20px;
+}
+
+.mantra {
+  color: var(--gold-light);
+  letter-spacing: 3px;
+  font-size: 17px;
+}
+
+.script {
+  font-family: 'Great Vibes', cursive;
+  color: var(--gold-light);
+  font-size: clamp(40px, 8vw, 68px);
+  margin: 20px 0 5px;
+}
+
+.open-date {
+  letter-spacing: 4px;
+  color: var(--gold-light);
+  margin: 22px 0;
+  font-size: 17px;
+}
+
+.open-btn {
+  border: 1px solid var(--gold);
+  color: var(--cream);
+  background: transparent;
+  padding: 15px 35px;
+  letter-spacing: 3px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: .3s;
+}
+
+.open-btn:hover {
+  background: var(--gold);
+  color: var(--wine-dark);
+}
+
+.sound-note {
+  color: #d9c69c;
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+/* NAVIGATION */
+
+nav {
+  background: var(--wine-dark);
+  color: var(--cream);
+  padding: 17px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--gold);
+}
+
+nav a {
+  color: var(--gold-light);
+  text-decoration: none;
+  letter-spacing: 2px;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+nav a:hover { color: white; }
+
+.sound-toggle {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold-light);
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+/* COMMON */
+
+section { scroll-margin-top: 75px; }
+
+.container {
+  max-width: 950px;
+  margin: auto;
+  padding: 75px 24px;
+  text-align: center;
+}
+
+.eyebrow {
+  color: #a47732;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+h1, h2, h3 {
+  color: var(--wine);
+  font-weight: 600;
+}
+
+h2 {
+  font-size: clamp(38px, 6vw, 58px);
+  margin: 15px 0 25px;
+}
+
+.divider {
+  width: 170px;
+  height: 1px;
+  background: var(--gold);
+  margin: 30px auto;
+  position: relative;
+}
+
+.divider:after {
+  content: "✦";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--cream);
+  padding: 0 12px;
+  color: var(--gold);
+}
+
+/* HERO */
+
+#home {
+  background:
+    linear-gradient(#fff8ebee, #fff8ebee),
+    radial-gradient(circle, #d6b875 1px, transparent 1px);
+  background-size: auto, 25px 25px;
+  border-bottom: 1px solid var(--gold);
+}
+
+.hero-inner {
+  border: 1px solid var(--gold);
+  outline: 1px solid #d4b875;
+  outline-offset: 8px;
+  padding: 45px 20px;
+  max-width: 800px;
+  margin: 15px auto;
+}
+
+.hero-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(48px, 9vw, 85px);
+  color: var(--wine);
+  margin: 20px 0;
+  line-height: 1.1;
+}
+
+.hero-date {
+  font-size: 23px;
+  letter-spacing: 3px;
+  color: #865d2e;
+}
+
+.couple-display {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin: 35px auto;
+  max-width: 680px;
+}
+
+.couple-card {
+  padding: 25px 12px;
+  border: 1px solid #d6bb80;
+  background: #fffdf8;
+}
+
+.couple-card .name {
+  font-size: clamp(23px, 4vw, 34px);
+  font-weight: 700;
+  color: var(--wine);
+}
+
+.couple-card .heart {
+  color: #a02c42;
+  font-size: 27px;
+  margin: 5px;
+}
+
+.invited {
+  font-size: 21px;
+  font-style: italic;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 25px 0;
+}
+
+.time-box {
+  background: var(--wine);
+  color: var(--cream);
+  min-width: 75px;
+  padding: 12px 10px;
+}
+
+.time-box strong {
+  display: block;
+  font-size: 29px;
+  color: var(--gold-light);
+}
+
+.time-box span {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.gold-btn {
+  display: inline-block;
+  background: var(--wine);
+  color: var(--cream);
+  border: 1px solid var(--gold);
+  padding: 13px 25px;
+  margin: 7px;
+  text-decoration: none;
+  letter-spacing: 2px;
+  font-size: 13px;
+  transition: .3s;
+}
+
+.gold-btn:hover {
+  background: #76243b;
+}
+
+/* INVITATION */
+
+#invitation {
+  background: #f7eedf;
+}
+
+.letter {
+  max-width: 720px;
+  margin: 30px auto 0;
+  padding: 40px 28px;
+  border: 1px solid var(--gold);
+  background: var(--cream);
+  box-shadow: 0 8px 25px #5b30100d;
+}
+
+.letter p {
+  font-size: 21px;
+  line-height: 1.8;
+}
+
+.letter-names {
+  color: var(--wine);
+  font-size: 35px;
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+.letter-heart {
+  color: #a02c42;
+  font-size: 25px;
+}
+
+/* PROGRAMME */
+
+#programme {
+  background: var(--wine-dark);
+  color: var(--cream);
+}
+
+#programme h2 { color: var(--gold-light); }
+#programme .eyebrow { color: var(--gold); }
+
+.timeline {
+  max-width: 650px;
+  margin: 35px auto 0;
+  text-align: left;
+  border-left: 1px solid var(--gold);
+  padding-left: 30px;
+}
+
+.timeline-item {
+  position: relative;
+  padding: 0 0 40px;
+}
+
+.timeline-item:before {
+  content: "✦";
+  position: absolute;
+  left: -39px;
+  top: 0;
+  color: var(--gold);
+  font-size: 17px;
+}
+
+.timeline-time {
+  color: var(--gold-light);
+  font-size: 17px;
+  letter-spacing: 3px;
+}
+
+.timeline-item h3 {
+  color: var(--cream);
+  font-size: 29px;
+  margin: 7px 0;
+}
+
+.timeline-item p {
+  color: #ddcdb0;
+  font-size: 18px;
+  margin: 0;
+}
+
+/* VENUE */
+
+#venue {
+  background: var(--cream);
+}
+
+.venue-card {
+  max-width: 700px;
+  margin: 30px auto 0;
+  border: 1px solid var(--gold);
+  padding: 35px 20px;
+  background: #fffdf7;
+}
+
+.venue-name {
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--wine);
+  margin: 15px 0;
+}
+
+.venue-address {
+  font-size: 21px;
+  line-height: 1.7;
+}
+
+/* FOOTER */
+
+footer {
+  background: var(--wine-dark);
+  color: var(--gold-light);
+  text-align: center;
+  padding: 45px 20px;
+  border-top: 1px solid var(--gold);
+}
+
+footer p {
+  font-size: 19px;
+  font-style: italic;
+}
+
+footer strong {
+  font-size: 24px;
+  color: var(--cream);
+}
+
+@media(max-width:600px) {
+  nav { gap: 14px; }
+  nav a { font-size: 11px; letter-spacing: 1px; }
+  .couple-display { grid-template-columns: 1fr; }
+  .container { padding: 55px 18px; }
+  .hero-inner { padding: 35px 12px; }
+  .letter { padding: 30px 18px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- OPENING -->
+
+<div id="opening">
+  <div class="opening-inner">
+    <div class="mantra">॥ श्री गणेशाय नमः ॥</div>
+
+    <div class="script">Honey & Lali</div>
+    <div class="mantra">♥</div>
+    <div class="script">Sunny & Rishu</div>
+
+    <div class="open-date">20 · 11 · 2026</div>
+
+    <button class="open-btn" onclick="openInvitation()">
+      OPEN THE DOORS
+    </button>
+
+    <div class="sound-note">A special celebration awaits you</div>
+  </div>
+</div>
+
+<!-- NAVIGATION -->
+
+<nav>
+  <a href="#home">Home</a>
+  <a href="#invitation">Invitation</a>
+  <a href="#programme">Programme</a>
+  <a href="#venue">Venue</a>
+  <button class="sound-toggle" id="soundButton" onclick="toggleSound()">♫ SOUND OFF</button>
+</nav>
+
+<!-- HOME -->
+
+<section id="home">
+<div class="container">
+  <div class="hero-inner">
+
+    <div class="eyebrow">॥ Shree Ganeshaya Namah ॥</div>
+
+    <h1 class="hero-title">Engagement Ceremony</h1>
+
+    <div class="couple-display">
+
+      <div class="couple-card">
+        <div class="eyebrow">The First Couple</div>
+        <div class="name">Honey Chaudhary</div>
+        <div class="heart">♥</div>
+        <div class="name">Lali Chaudhary</div>
+      </div>
+
+      <div class="couple-card">
+        <div class="eyebrow">The Second Couple</div>
+        <div class="name">Sunny Chaudhary</div>
+        <div class="heart">♥</div>
+        <div class="name">Rishu Chaudhary</div>
+      </div>
+
+    </div>
+
+    <div class="hero-date">Friday · 20 November 2026</div>
+
+    <div class="divider"></div>
+
+    <p class="invited">
+      Your presence and blessings will make our celebration special.
+    </p>
+
+    <div class="eyebrow">Celebrations begin in</div>
+
+    <div class="countdown" id="countdown">
+      <div class="time-box"><strong id="days">--</strong><span>Days</span></div>
+      <div class="time-box"><strong id="hours">--</strong><span>Hours</span></div>
+      <div class="time-box"><strong id="minutes">--</strong><span>Minutes</span></div>
+      <div class="time-box"><strong id="seconds">--</strong><span>Seconds</span></div>
+    </div>
+
+    <a class="gold-btn" href="#invitation">VIEW INVITATION</a>
+    <a class="gold-btn" href="#programme">VIEW PROGRAMME</a>
+
+  </div>
+</div>
+</section>
+
+<!-- INVITATION -->
+
+<section id="invitation">
+<div class="container">
+
+  <div class="eyebrow">Saadar Amantran</div>
+  <h2>Invitation</h2>
+
+  <div class="divider"></div>
+
+  <div class="letter">
+
+    <div class="eyebrow">॥ ॐ श्री गणेशाय नमः ॥</div>
+
+    <p>
+      With the blessings of the Almighty and the love of our families,
+      we cordially invite you to join us on the auspicious occasion of
+      the engagement ceremony of our beloved couples.
+    </p>
+
+    <div class="letter-names">Honey Chaudhary</div>
+    <div class="letter-heart">♥</div>
+    <div class="letter-names">Lali Chaudhary</div>
+
+    <div class="divider"></div>
+
+    <div class="letter-names">Sunny Chaudhary</div>
+    <div class="letter-heart">♥</div>
+    <div class="letter-names">Rishu Chaudhary</div>
+
+    <p>
+      Your gracious presence, love and blessings will make this
+      joyous occasion even more memorable.
+    </p>
+
+    <div class="eyebrow">Friday · 20 November 2026</div>
+
+  </div>
+</div>
+</section>
+
+<!-- PROGRAMME -->
+
+<section id="programme">
+<div class="container">
+
+  <div class="eyebrow">The Day of Celebration</div>
+  <h2>मांगलिक कार्यक्रम</h2>
+
+  <div class="divider"></div>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-time">11:00 AM</div>
+      <h3>Preetibhoj</h3>
+      <p>Wedding Feast · Join us for a meal and celebration with family and friends.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-time">2:00 PM</div>
+      <h3>Engagement Ceremony</h3>
+      <p>Vachan Sanskar · Celebrate the special moment and bless both couples.</p>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- VENUE -->
+
+<section id="venue">
+<div class="container">
+
+  <div class="eyebrow">We look forward to welcoming you</div>
+  <h2>Venue & Directions</h2>
+
+  <div class="divider"></div>
+
+  <div class="venue-card">
+
+    <div class="eyebrow">The Celebration Venue</div>
+
+    <div class="venue-name">Shree Prem Garden</div>
+
+    <p class="venue-address">
+      Opposite the Petrol Pump,<br>
+      Salarpur, Hapur,<br>
+      Uttar Pradesh, India
+    </p>
+
+    <a class="gold-btn"
+       href="https://maps.app.goo.gl/7EPYXyN7dUKwextz6"
+       target="_blank"
+       rel="noopener">
+       GET DIRECTIONS
+    </a>
+
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="eyebrow">॥ With Best Wishes ॥</div>
+  <p>We look forward to your love and blessings</p>
+  <strong>The Chaudhary Family</strong>
+  <p>♥</p>
+</footer>
+
+<!-- OPTIONAL MUSIC: Add your own licensed music file named music.mp3 -->
+
+<audio id="backgroundMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function openInvitation() {
+    const music = document.getElementById("backgroundMusic");
+
+    music.volume = 0.5;
+
+    music.play().catch(() => {
+        console.log("Tap to enable sound");
+    });
+
+    document.getElementById("opening").classList.add("closed");
+}
+</script>
+
+const target = new Date("2026-11-20T11:00:00+05:30").getTime();
+
+function updateCountdown() {
+  const diff = target - Date.now();
+
+  if (diff <= 0) {
+    document.getElementById("countdown").innerHTML =
+      "<h3 style='color:var(--wine)'>The celebration day is here!</h3>";
+    return;
+  }
+
+  const values = {
+    days: Math.floor(diff / 86400000),
+    hours: Math.floor(diff % 86400000 / 3600000),
+    minutes: Math.floor(diff % 3600000 / 60000),
+    seconds: Math.floor(diff % 60000 / 1000)
+  };
+
+  for (const [id, value] of Object.entries(values)) {
+    document.getElementById(id).textContent =
+      String(value).padStart(2, "0");
+  }
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+let musicPlaying = false;
+
+async function toggleSound() {
+  const music = document.getElementById("backgroundMusic");
+  const button = document.getElementById("soundButton");
+
+  if (!musicPlaying) {
+    try {
+      await music.play();
+      musicPlaying = true;
+      button.textContent = "♫ SOUND ON";
+    } catch (error) {
+      alert("Add a music.mp3 file to the website folder to enable music.");
+    }
+  } else {
+    music.pause();
+    musicPlaying = false;
+    button.textContent = "♫ SOUND OFF";
+  }
+}
+</script>
+
+</body>
+</html>
